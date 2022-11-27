@@ -1,16 +1,11 @@
 name: CMake
 
-on:
-  push:
-    branches: [ "*" ]
-  pull_request:
-    branches: [ "*" ]
-  release:
-    type: [created, edited]
+on: [push]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: RelWithDebInfo
+  HWS4_VERSION: 1.0.0
 
 jobs:
   build:
@@ -72,20 +67,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: HelloWorldSdk4_plugin
+          name: HelloWorldSdk4_v${{env.HWS4_VERSION}}
           path: |
             ${{github.workspace}}/HelloWorldSdk4*
           if-no-files-found: error
-
-      - name: Create plugin archive
-        if: github.event_name == 'release'
-        run: zip -r HelloWorldSdk3.zip HelloWorldSdk4/
-
-      - name: Upload binaries to release
-        if: github.event_name == 'release'
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: HelloWorldSdk4.zip
-          tag: ${{ github.ref }}
-          overwrite: true
