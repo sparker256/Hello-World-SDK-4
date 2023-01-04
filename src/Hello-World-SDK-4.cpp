@@ -2,6 +2,7 @@
 
 #include "XPLMDisplay.h"
 #include "XPLMGraphics.h"
+#include "XPLMUtilities.h"
 #include <string.h>
 #if IBM
 	#include <windows.h>
@@ -35,9 +36,9 @@ PLUGIN_API int XPluginStart(
 							char *		outSig,
 							char *		outDesc)
 {
-	strcpy(outName, "HelloWorld3Plugin");
+    strcpy(outName, "HelloWorld4Plugin");
 	strcpy(outSig, "xpsdk.examples.helloworld3plugin");
-	strcpy(outDesc, "A Hello World plug-in for the XPLM300 SDK.");
+    strcpy(outDesc, "A Hello World plug-in for the XPLM400 SDK.");
 	
 	XPLMCreateWindow_t params;
 	params.structSize = sizeof(params);
@@ -84,8 +85,17 @@ PLUGIN_API void	XPluginStop(void)
 	g_window = NULL;
 }
 
-PLUGIN_API void XPluginDisable(void) { }
-PLUGIN_API int  XPluginEnable(void)  { return 1; }
+PLUGIN_API void XPluginDisable(void)
+{
+    XPLMDebugString("HelloWorld4Plugin: Disabled!\n");
+}
+
+
+PLUGIN_API int  XPluginEnable(void)
+{
+    XPLMDebugString("HelloWorld4Plugin: Enabled!\n");
+    return 1;
+}
 PLUGIN_API void XPluginReceiveMessage(XPLMPluginID inFrom, int inMsg, void * inParam) { }
 
 void	draw_hello_world(XPLMWindowID in_window_id, void * in_refcon)
