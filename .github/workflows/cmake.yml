@@ -70,8 +70,10 @@ jobs:
         run: mv HelloWorldSdk4/lin_x64/lin.xpl HelloWorldSdk4/lin_x64/HelloWorldSdk4.xpl
       - name: Rename win.xpl to HelloWorldSdk4/win_x64/HelloWorldSdk4.xpl
         run: mv HelloWorldSdk4/lin_x64/win.xpl HelloWorldSdk4/win_x64/HelloWorldSdk4.xpl
-      - name: Rename win.xpl to HelloWorldSdk4/mac_x64/HelloWorldSdk4.xpl
+      - name: Rename mac.xpl to HelloWorldSdk4/mac_x64/HelloWorldSdk4.xpl
         run: mv HelloWorldSdk4/lin_x64/mac.xpl HelloWorldSdk4/mac_x64/HelloWorldSdk4.xpl
+      - name: List Final Folder     
+        run: ls -R -l  
       - uses: actions/upload-artifact@v3
         with:
           name: HelloWorldSdk4_v${{env.HWS4_VERSION}}
