@@ -226,6 +226,4 @@ src/build-win
 .idea
 
 # HelloWorldSdk4 files
-HelloWorldSdk4/lin_x64/*.xpl
-HelloWorldSdk4/mac_x64/*.xpl
-HelloWorldSdk4/win_x64/*.xpl
+
