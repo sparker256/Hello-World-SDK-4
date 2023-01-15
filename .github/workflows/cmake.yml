@@ -63,8 +63,15 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: binaries
-          path: HelloWorldSdk4/64
-
+          path: HelloWorldSdk4/lin_x64
+      - name: Test artifact download     
+        run: ls -R -l
+      - name: Rename lin.xpl to HelloWorldSdk4.xpl
+        run: mv HelloWorldSdk4/lin_x64/lin.xpl HelloWorldSdk4/lin_x64/HelloWorldSdk4.xpl
+      - name: Rename win.xpl to HelloWorldSdk4/win_x64/HelloWorldSdk4.xpl
+        run: mv HelloWorldSdk4/lin_x64/win.xpl HelloWorldSdk4/win_x64/HelloWorldSdk4.xpl
+      - name: Rename win.xpl to HelloWorldSdk4/mac_x64/HelloWorldSdk4.xpl
+        run: mv HelloWorldSdk4/lin_x64/mac.xpl HelloWorldSdk4/mac_x64/HelloWorldSdk4.xpl
       - uses: actions/upload-artifact@v3
         with:
           name: HelloWorldSdk4_v${{env.HWS4_VERSION}}
