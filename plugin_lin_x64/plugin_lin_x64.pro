@@ -37,7 +37,22 @@ unix:!macx {
 }
 
 
-HEADERS +=  
+HEADERS +=  ../src/SDK/CHeaders/XPLM/XPLMCamera.h \
+            ../src/SDK/CHeaders/XPLM/XPLMDataAccess.h \
+            ../src/SDK/CHeaders/XPLM/XPLMDefs.h \
+            ../src/SDK/CHeaders/XPLM/XPLMDisplay.h \
+            ../src/SDK/CHeaders/XPLM/XPLMGraphics.h \
+            ../src/SDK/CHeaders/XPLM/XPLMInstance.h \
+            ../src/SDK/CHeaders/XPLM/XPLMMap.h \
+            ../src/SDK/CHeaders/XPLM/XPLMMenus.h \
+            ../src/SDK/CHeaders/XPLM/XPLMNavigation.h \
+            ../src/SDK/CHeaders/XPLM/XPLMPlanes.h \
+            ../src/SDK/CHeaders/XPLM/XPLMPlugin.h \
+            ../src/SDK/CHeaders/XPLM/XPLMProcessing.h \
+            ../src/SDK/CHeaders/XPLM/XPLMScenery.h \
+            ../src/SDK/CHeaders/XPLM/XPLMSound.h \
+            ../src/SDK/CHeaders/XPLM/XPLMUtilities.h \
+            ../src/SDK/CHeaders/XPLM/XPLMWeather.h  
 
 SOURCES +=  ../src/Hello-World-SDK-4.cpp
 
