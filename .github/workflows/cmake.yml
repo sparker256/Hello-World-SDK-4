@@ -47,9 +47,9 @@ jobs:
       working-directory: ${{github.workspace}}/build
       run: ctest -C ${{env.BUILD_TYPE}}
       
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
-        name: binaries
+        name: binaries-${{matrix.os}}
         path: ${{github.workspace}}/build/*.xpl
         if-no-files-found: error
 
@@ -59,8 +59,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      
+      - uses: actions/upload-artifact/merge@v4
+        with:
+          name: binaries
+          pattern: binaries-*
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: binaries
           path: HelloWorldSdk4/lin_x64
@@ -76,7 +81,7 @@ jobs:
         run: mv HelloWorldSdk4/lin_x64/mac.xpl HelloWorldSdk4/mac_x64/HelloWorldSdk4.xpl
       - name: List Final Folder     
         run: ls -R -l  
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: HelloWorldSdk4_v${{env.HWS4_VERSION}}
           path: |
